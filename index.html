@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Cycler</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(0, 100%, 50%);
+            transition: background-color 0.3s ease;
+        }
+        h1 {
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Press Left or Right Arrow to Change Color</h1>
+
+    <script>
+        let hue = 0; // Initial hue value
+
+        // Function to update the background color
+        function updateBackgroundColor() {
+            document.body.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        }
+
+        // Event listener for keydown events
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                hue = (hue + 10) % 360; // Increase hue by 10, wrapping around at 360
+                updateBackgroundColor();
+            } else if (event.key === 'ArrowLeft') {
+                hue = (hue - 10 + 360) % 360; // Decrease hue by 10, wrapping around at 0
+                updateBackgroundColor();
+            }
+        });
+    </script>
+</body>
+</html>
